@@ -9,7 +9,8 @@ elif [[ ${1} == "--update" ]];then
 		exit;
 	fi
 	echo "INFO: Updating...";
-	curl -s ""
+	curl -s "https://raw.githubusercontent.com/novranfaathir/bashrc-cool/master/bashrc-cool.bash" > /usr/bin/bashrc-cool
+	echo "INFO: Done!"
 	exit;
 elif [[ -z ${1} ]];then
 	echo -ne "";
