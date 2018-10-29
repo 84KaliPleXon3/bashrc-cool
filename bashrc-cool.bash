@@ -1,4 +1,5 @@
 #!/bin/bash
+VERSION="1.2";
 
 if [[ ${1} == "--help" ]];then
 	echo "Help menu";
@@ -33,6 +34,7 @@ echo " BashRC-Cool 1.0 Configuration ";
 echo "";
 echo " Select your themes : ";
 echo " [1]. Rose";
+echo " [2]. Horse";
 echo -ne " >> ";read SELECTED;
 
 cd ~
@@ -49,6 +51,8 @@ if [[ ! -f "${CURTHEME}" ]];then
 fi
 if [[ ${SELECTED} == "1" ]];then
 	curl -s "https://raw.githubusercontent.com/novranfaathir/bashrc-cool/master/themes/rose.bash" > ${CURTHEME}
+elif [[ ${SELECTED} == "2" ]];then
+	curl -s "https://raw.githubusercontent.com/novranfaathir/bashrc-cool/master/themes/horse.bash" > ${CURTHEME}
 else
 	echo "ERROR: Invalid parameter";
 fi
