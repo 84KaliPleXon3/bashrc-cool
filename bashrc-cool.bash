@@ -49,4 +49,6 @@ if [[ ! -f "${CURTHEME}" ]];then
 fi
 if [[ ${SELECTED} == "1" ]];then
 	curl -s "https://raw.githubusercontent.com/novranfaathir/bashrc-cool/master/themes/rose.bash" > ${CURTHEME}
+else
+	echo "ERROR: Invalid parameter";
 fi
