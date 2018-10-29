@@ -15,3 +15,8 @@ wget https://raw.githubusercontent.com/novranfaathir/bashrc-cool/master/setup.ba
 chmod +x setup.bash
 ./setup.bash
 ```
+
+### Command to Run
+```
+bashrc-cool
+```
