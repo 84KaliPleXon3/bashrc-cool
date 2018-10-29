@@ -16,7 +16,7 @@ chmod +x setup.bash
 ./setup.bash
 ```
 
-### Command to Run
+### Command to Configuration Menu
 ```
 bashrc-cool
 ```
