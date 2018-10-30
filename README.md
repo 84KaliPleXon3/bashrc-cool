@@ -11,10 +11,10 @@ Custom your `~/.bashrc` with BashRC Cool.
 
 ### Installation:
 ```
-sudo -i / su
-wget https://raw.githubusercontent.com/novranfaathir/bashrc-cool/master/setup.bash
+git clone https://github.com/panophan/bashrc-cool.git
+cd bashrc-cool
 chmod +x setup.bash
-./setup.bash
+sudo ./setup.bash
 ```
 
 ### Command to Configuration Menu
