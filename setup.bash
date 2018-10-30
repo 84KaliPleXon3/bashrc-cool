@@ -1,13 +1,34 @@
 #!/bin/bash
+# setup.bash
 
-if [[ $(whoami) != "root" ]];then
-	echo "ERROR: Please setup with root";
+if [[ $(whoami) != "root" ]];
+then
+	echo "ERROR: Please setup using root"
+	exit
 fi
-if [[ -z $(command -v curl) ]];then
-	echo "ERROR: curl not found, please install curl";
-	exit;
+
+if [[ -d "/opt" ]];
+then
+	mkdir /opt/bashrc-cool
+	mkdir /opt/bashrc-cool/themes
+	chmod -R 744 /opt/bashrc-cool
+	DATA="/opt/bashrc-cool"
+else
+	echo "ERROR: \"/opt\" not found"
+	exit
 fi
-curl -s "https://raw.githubusercontent.com/novranfaathir/bashrc-cool/master/bashrc-cool.bash" > /usr/bin/bashrc-cool
-chmod 777 /usr/bin/bashrc-cool
-ln -sf /usr/bin/bashrc-cool /usr/bin/local/bashrc-cool
-echo "DONE: Please run it with command: bashrc-cool";
+
+if [[ -d ${DATA} ]]
+then
+	rm -rf ${DATA}
+fi
+
+cp -R themes/* ${DATA}/themes/
+touch ${DATA}/bashrc-cool.bash
+chmod 755 ${DATA}/bashrc-cool.bash
+echo '#!/bin/bash' > ${DATA}/bashrc-cool.bash
+echo "DATA=\"${DATA}\"" >> ${DATA}/bashrc-cool.bash
+cat src/bashrc-cool.bash >> ${DATA}/bashrc-cool.bash
+ln -sf ${DATA}/bashrc-cool.bash /usr/bin/bashrc-cool 2> /dev/null
+ln -sf ${DATA}/bashrc-cool.bash /usr/local/bin/bashrc-cool 2> /dev/null
+chmod -R 755 ${DATA}
