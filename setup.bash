@@ -6,12 +6,13 @@ then
 	exit
 fi
 
+if [[ -d "/opt/bashrc-cool" ]]
+then
+	rm -rf "/opt/bashrc-cool"
+fi
+
 if [[ -d "/opt" ]];
 then
-	if [[ -d ${DATA} ]]
-	then
-		rm -rf ${DATA}
-	fi
 	mkdir /opt/bashrc-cool
 	mkdir /opt/bashrc-cool/themes
 	chmod -R 744 /opt/bashrc-cool
