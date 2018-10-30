@@ -2,9 +2,6 @@
 if [[ ${1} == "--help" ]];then
 	echo "Help menu";
 	exit;
-elif [[ ${1} == "--update" ]];then
-	${DATA}/update.bash
-	exit;
 elif [[ -z ${1} ]];then
 	echo -ne "";
 else
