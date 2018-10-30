@@ -3,13 +3,7 @@ if [[ ${1} == "--help" ]];then
 	echo "Help menu";
 	exit;
 elif [[ ${1} == "--update" ]];then
-	if [[ -z $(command -v curl) ]];then
-		echo "ERROR: curl not found, please install curl";
-		exit;
-	fi
-	echo "INFO: Updating...";
-	curl -s "https://raw.githubusercontent.com/novranfaathir/bashrc-cool/master/bashrc-cool.bash" > /opt/bashrc-cool/bashrc-cool.bash
-	echo "INFO: Done!"
+	${DATA}/update.bash
 	exit;
 elif [[ -z ${1} ]];then
 	echo -ne "";
