@@ -1,5 +1,4 @@
 #!/bin/bash
-# setup.bash
 
 if [[ $(whoami) != "root" ]];
 then
@@ -9,6 +8,10 @@ fi
 
 if [[ -d "/opt" ]];
 then
+	if [[ -d ${DATA} ]]
+	then
+		rm -rf ${DATA}
+	fi
 	mkdir /opt/bashrc-cool
 	mkdir /opt/bashrc-cool/themes
 	chmod -R 744 /opt/bashrc-cool
@@ -16,11 +19,6 @@ then
 else
 	echo "ERROR: \"/opt\" not found"
 	exit
-fi
-
-if [[ -d ${DATA} ]]
-then
-	rm -rf ${DATA}
 fi
 
 cp -R themes/* ${DATA}/themes/
