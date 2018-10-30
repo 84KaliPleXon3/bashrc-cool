@@ -1,5 +1,3 @@
-#!/bin/bash
-VERSION="1.2";
 
 if [[ ${1} == "--help" ]];then
 	echo "Help menu";
@@ -10,7 +8,7 @@ elif [[ ${1} == "--update" ]];then
 		exit;
 	fi
 	echo "INFO: Updating...";
-	curl -s "https://raw.githubusercontent.com/novranfaathir/bashrc-cool/master/bashrc-cool.bash" > /usr/bin/bashrc-cool
+	curl -s "https://raw.githubusercontent.com/novranfaathir/bashrc-cool/master/bashrc-cool.bash" > /opt/bashrc-cool/bashrc-cool.bash
 	echo "INFO: Done!"
 	exit;
 elif [[ -z ${1} ]];then
@@ -30,29 +28,39 @@ if [[ -z $(ls -la ~ | grep '[.]bashrc') ]];then
 	exit;
 fi
 
-echo " BashRC-Cool 1.0 Configuration ";
-echo "";
-echo " Select your themes : ";
-echo " [1]. Rose";
-echo " [2]. Horse";
-echo -ne " >> ";read SELECTED;
-
 cd ~
-CURTHEME=$(echo "$(pwd)/bashrc-cool-current.bash");
 
-if [[ -z $(cat ~/.bashrc | grep bashrc-cool-current.bash) ]];then
-	cd ~
-	CURTHEME=$(echo "$(pwd)/bashrc-cool-current.bash");
-	echo "${CURTHEME}" >> ~/.bashrc
-fi
-if [[ ! -f "${CURTHEME}" ]];then
-	touch ${CURTHEME}
-	chmod 777 ${CURTHEME}
-fi
-if [[ ${SELECTED} == "1" ]];then
-	curl -s "https://raw.githubusercontent.com/novranfaathir/bashrc-cool/master/themes/rose.bash" > ${CURTHEME}
-elif [[ ${SELECTED} == "2" ]];then
-	curl -s "https://raw.githubusercontent.com/novranfaathir/bashrc-cool/master/themes/horse.bash" > ${CURTHEME}
+GETBRC="$(pwd)/.bashrc"
+GETCUR="$(pwd)/current-bashrc-cool.bash"
+
+
+### MENU ###
+echo -ne "--- BashRC Cool Configuration ---\n"
+if [[ -z $(cat ${GETBRC} | grep "${GETCUR}") ]]
+then
+	echo "${GETCUR}" >> ${GETBRC}
+	echo "INFO: Script added to ${GETBRC}\n\n"
 else
-	echo "ERROR: Invalid parameter";
+	echo -ne "INFO: Script already exist in ${GETBRC}\n\n"
+fi
+echo " * Theme lists :"
+for THEME in $(ls ${DATA}/themes/ | sed 's/[.]/ /g' | awk '{print $1}')
+do
+	echo "   => ${THEME}"
+done
+
+echo -ne "\n select-theme~>> "
+read SELECTED
+### MEOF ###
+
+echo ""
+if [[ ! $(ls ${DATA}/themes/ | sed 's/[.]/ /g' | awk '{print $1}' | grep ^"${SELECTED}"$) ]];
+then
+	echo "ERROR: Themes does not exist!"
+	exit
+else
+	THM=$(ls ${DATA}/themes/ | sed 's/[.]/ /g' | awk '{print $1}' | grep ^"${SELECTED}"$)
+	cat ${DATA}/themes/${THM}.bash > ${GETCUR}
+	chmod +x ${GETCUR}
+	echo "DONE: .bashrc changed!"
 fi
