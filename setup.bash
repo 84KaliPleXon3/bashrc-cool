@@ -32,3 +32,4 @@ cp update.bash ${DATA}/
 ln -sf ${DATA}/bashrc-cool.bash /usr/bin/bashrc-cool 2> /dev/null
 ln -sf ${DATA}/bashrc-cool.bash /usr/local/bin/bashrc-cool 2> /dev/null
 chmod -R 755 ${DATA}
+echo "DONE: Setup success!"
