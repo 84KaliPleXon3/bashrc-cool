@@ -4,6 +4,7 @@ Custom your `~/.bashrc` with BashRC Cool.
 ### Themes
 1. Rose
 2. Horse
+3. Minion
 
 ### Example
 ![alt text](https://i.postimg.cc/mr0bx176/Selection-691.png)
