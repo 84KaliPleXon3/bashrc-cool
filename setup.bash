@@ -28,6 +28,7 @@ chmod 755 ${DATA}/bashrc-cool.bash
 echo '#!/bin/bash' > ${DATA}/bashrc-cool.bash
 echo "DATA=\"${DATA}\"" >> ${DATA}/bashrc-cool.bash
 cat src/bashrc-cool.bash >> ${DATA}/bashrc-cool.bash
+cp update.bash ${DATA}/
 ln -sf ${DATA}/bashrc-cool.bash /usr/bin/bashrc-cool 2> /dev/null
 ln -sf ${DATA}/bashrc-cool.bash /usr/local/bin/bashrc-cool 2> /dev/null
 chmod -R 755 ${DATA}
